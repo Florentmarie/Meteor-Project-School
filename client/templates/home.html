@@ -24,7 +24,7 @@
 </template>
 
 <template name="ajout">
-  <!-- add a form below the h1 -->
+	<!-- ajout d'un contact -->
   <form class="new-contact">
     <input type="text" name="nom" placeholder="NOM" />
     <input type="mail" name="mail" placeholder="MAIL" />
@@ -32,11 +32,9 @@
   </form>
 </template>
 
-	<!-- CA liste tous les users -->
-<!-- 	{{#each utilisateur}}  
-		{{username}}
-	{{/each}}  -->
 <template name="searchBox">
+	<!-- instant searchbox -->
+
     {{> esInput index="users" placeholder="Chercher un user" }}
 
     <ul>

@@ -2,42 +2,33 @@ Contacts = new Mongo.Collection("contacts");
 
 if (Meteor.isClient) {
     Meteor.users.initEasySearch('username');
+    Meteor.subscribe("contacts");
+    Meteor.subscribe("userData");
 
-Meteor.subscribe("contacts");
-Meteor.subscribe("userData");
-  // counter starts at 0
-  Session.setDefault('counter', 0);
 
-  Template.ajout.helpers({
 
-  });
-/*
-  Template.search.helpers({
-    utilisateur: function () {
-     return Meteor.users.find();
-    }
-  });
-*/
   Template.ajout.events({
+
    "submit .new-contact": function (event) {
-    // This function is called when the new task form is submitted
+  
 
     var nom = event.target.nom.value;
     var mail = event.target.nom.value;
 
+    // appelle la method addcontact (regarde plus bas)
     Meteor.call("addContacts", nom, mail);
     // Clear form
     event.target.nom.value = "";
     event.target.mail.value = "";
     alert('contact ajouté');
-    // Prevent default form submit
+    
     return false;
   }
   });
 
 
 
-      // At the bottom of the client code
+      // configuration account ui : pas de mail
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
   });
@@ -47,7 +38,7 @@ Meteor.subscribe("userData");
 
 Meteor.methods({
   addContacts: function (nom, mail) {
-    // Make sure the user is logged in before inserting a task
+    // vérifie si l'user est connecté
     if (! Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
