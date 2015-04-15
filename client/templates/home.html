@@ -23,12 +23,16 @@
 </template>
 
 
+	<!-- CA liste tous les users -->
+<!-- 	{{#each utilisateur}}  
+		{{username}}
+	{{/each}}  -->
 <template name="searchBox">
     {{> esInput index="users" placeholder="Chercher un user" }}
 
     <ul>
         {{#esEach index="users"}}
-            <li>Nom de l'utilisateur : {{username}}</li>
+            <li>Nom de l'utilisateur : <a href='/user/{{_id}}'>{{username}}</a></li>
         {{/esEach}}
     </ul>
 </template>
