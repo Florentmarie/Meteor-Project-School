@@ -6,6 +6,7 @@
 <body>
   {{> hello}}
   {{> searchBox}}
+  {{> ajout}}
 
 </body>
 
@@ -22,6 +23,14 @@
  </div>
 </template>
 
+<template name="ajout">
+  <!-- add a form below the h1 -->
+  <form class="new-contact">
+    <input type="text" name="nom" placeholder="NOM" />
+    <input type="mail" name="mail" placeholder="MAIL" />
+     <input type="submit" value="Submit">
+  </form>
+</template>
 
 	<!-- CA liste tous les users -->
 <!-- 	{{#each utilisateur}}  
