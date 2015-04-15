@@ -4,9 +4,8 @@
 
 <body>
   <h1>Welcome to Meteor!</h1>
-
+  {{> loginButtons}}
   {{> hello}}
-  {{> connect}}
 </body>
 
 <template name="hello">
@@ -20,7 +19,3 @@
 	</div>
 </template>
 
-<template name="connect">
-	{{> loginButtons}}
-	<div>Dem test</div>
-</template>
