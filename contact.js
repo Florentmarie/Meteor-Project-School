@@ -1,6 +1,9 @@
 
 
 if (Meteor.isClient) {
+    Meteor.users.initEasySearch('username');
+
+Meteor.subscribe("userData");
   // counter starts at 0
   Session.setDefault('counter', 0);
 
@@ -9,7 +12,13 @@ if (Meteor.isClient) {
       return Session.get('counter');
     }
   });
-
+/*
+  Template.search.helpers({
+    utilisateur: function () {
+     return Meteor.users.find();
+    }
+  });
+*/
   Template.hello.events({
     'click button': function () {
       // increment the counter when button is clicked
@@ -29,4 +38,7 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
   });
+
+
+  Meteor.users.initEasySearch('username');
 }
