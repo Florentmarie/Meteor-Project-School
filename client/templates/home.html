@@ -8,6 +8,10 @@
   {{> searchBox}}
   {{> ajout}}
 
+  <!-- si l'user est connecté on affiche sa liste -->
+  {{#if currentUser}}
+  {{> liste}}
+  {{/if}}
 </body>
 
 
@@ -26,20 +30,34 @@
 <template name="ajout">
 	<!-- ajout d'un contact -->
   <form class="new-contact">
-    <input type="text" name="nom" placeholder="NOM" />
-    <input type="mail" name="mail" placeholder="MAIL" />
+    <input required type="text" name="nom" placeholder="NOM" />
+    <input required type="email" name="mail" placeholder="MAIL" />
      <input type="submit" value="Submit">
   </form>
 </template>
 
 <template name="searchBox">
-	<!-- instant searchbox -->
+  <!-- instant searchbox -->
 
-    {{> esInput index="users" placeholder="Chercher un user" }}
+    {{> esInput index="contacts" placeholder="Chercher un contact" }}
 
     <ul>
-        {{#esEach index="users"}}
-            <li>Nom de l'utilisateur : <a href='/user/{{_id}}'>{{username}}</a></li>
+        {{#esEach index="contacts"}}
+            <li>Nom du contact : <a href='/user/{{_id}}'>{{nom}}</a></li>
         {{/esEach}}
     </ul>
+</template>
+
+<template name="liste">
+
+
+  {{#if contact}} <!-- si il a des contacts -->
+    {{#each contact}}   
+     <a href="user/{{_id}}"> Nom :  {{nom}}
+      Mail :  {{mail}}</a>
+      <br>
+     {{/each}}
+  {{else}}
+  Vous n'avez pas de contacts
+  {{/if}}
 </template>

@@ -1,10 +1,13 @@
 Contacts = new Mongo.Collection("contacts");
 
 if (Meteor.isClient) {
-    Meteor.users.initEasySearch('username');
-    Meteor.subscribe("contacts");
-    Meteor.subscribe("userData");
 
+
+  Template.liste.helpers({
+    contact : function(){
+      return  Contacts.find({owner: Meteor.userId()});
+    }
+  });
 
 
   Template.ajout.events({
@@ -20,7 +23,6 @@ if (Meteor.isClient) {
     // Clear form
     event.target.nom.value = "";
     event.target.mail.value = "";
-    alert('contact ajouté');
     
     return false;
   }
@@ -51,6 +53,7 @@ Meteor.methods({
       username: Meteor.user().username
     });
   }
+
 })
 
 if (Meteor.isServer) {
@@ -59,5 +62,5 @@ if (Meteor.isServer) {
   });
 
 
-  Meteor.users.initEasySearch('username');
+  Contacts.initEasySearch('nom');
 }
