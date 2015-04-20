@@ -5,13 +5,14 @@
 
 <body>
   {{> hello}}
-  {{> searchBox}}
+ 
   {{> ajout}}
 
   <!-- si l'user est connecté on affiche sa liste -->
   {{#if currentUser}}
   {{> liste}}
   {{/if}}
+   {{> searchBox}}
 </body>
 
 
@@ -46,6 +47,9 @@
             <li>Nom du contact : <a href='/user/{{_id}}'>{{nom}}</a></li>
         {{/esEach}}
     </ul>
+      {{#ifEsHasNoResults index="contacts"}}
+        <div class="no-results">Aucun résultat</div>
+    {{/ifEsHasNoResults}}
 </template>
 
 <template name="liste">

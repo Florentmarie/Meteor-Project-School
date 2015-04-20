@@ -2,7 +2,6 @@ Contacts = new Mongo.Collection("contacts");
 
 if (Meteor.isClient) {
 
-
   Template.liste.helpers({
     contact : function(){
       return  Contacts.find({owner: Meteor.userId()});
@@ -16,7 +15,7 @@ if (Meteor.isClient) {
   
 
     var nom = event.target.nom.value;
-    var mail = event.target.nom.value;
+    var mail = event.target.mail.value;
 
     // appelle la method addcontact (regarde plus bas)
     Meteor.call("addContacts", nom, mail);
@@ -58,9 +57,10 @@ Meteor.methods({
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
+
     // code to run on server at startup
   });
 
 
-  Contacts.initEasySearch('nom');
+  
 }
