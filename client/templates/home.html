@@ -1,18 +1,22 @@
 <template name="Home">
 <head>
-  <title>Contact</title>
+  <title>Répertoire de contacts</title>
 </head>
 
 <body>
-  {{> hello}}
+  <div class="container">
+    {{> hello}}
  
-  {{> ajout}}
+    {{> ajout}}
 
-  <!-- si l'user est connecté on affiche sa liste -->
-  {{#if currentUser}}
-  {{> liste}}
-  {{/if}}
-   {{> searchBox}}
+    <!-- si l'user est connecté on affiche sa liste -->
+    {{#if currentUser}}
+    {{> liste}}
+    {{/if}}
+
+     {{> searchBox}}
+  </div>
+  
 </body>
 
 
@@ -23,8 +27,10 @@
 <template name="hello">
  
  <div class="row">
-  <h1 class="col-md-2 col-md-offset-5">Contact</h1>
-  <div class="col-md-2 col-md-offset-5">{{> loginButtons}}</div>
+  <h1 class="text-center">Répertoire de contacts</h1>
+  <div class="login btn btn-primary">{{> loginButtons}}</div>
+  <a href="#">Ajouter un contact</a>
+  
  </div>
 </template>
 
@@ -58,7 +64,8 @@
   {{#if contact}} <!-- si il a des contacts -->
     {{#each contact}}   
      <a href="user/{{_id}}"> Nom :  {{nom}}
-      Mail :  {{mail}}</a>
+      Mail :  {{mail}}</a>      
+      <button class="delete">&times;</button>
       <br>
      {{/each}}
   {{else}}

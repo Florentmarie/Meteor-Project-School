@@ -8,6 +8,13 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.liste.events({
+   
+  "click .delete": function () {
+      Meteor.call("deleteContact", this._id);
+    }
+  });
+
 
   Template.ajout.events({
 
@@ -26,8 +33,6 @@ if (Meteor.isClient) {
     return false;
   }
   });
-
-
 
       // configuration account ui : pas de mail
   Accounts.ui.config({
@@ -51,6 +56,10 @@ Meteor.methods({
       owner: Meteor.userId(),
       username: Meteor.user().username
     });
+  },
+  deleteContact: function (contactId) {
+    console.log(contactId);
+    Contacts.remove(contactId);
   }
 
 })
