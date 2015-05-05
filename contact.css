@@ -1,1 +1,44 @@
 /* CSS declarations go here */
+body {
+  	font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+  	font-size: 12px;
+  	line-height: 1.167;
+  	color: #333;
+  	background-color: #333;
+}
+
+.container {
+  	background-color: #fff;
+  	margin-top: 20px;
+  	border-radius: 3px;
+  	position: relative;
+}
+
+.text-center {
+	text-align: center;
+}
+
+h1 {
+	font-size: 30px;
+}
+
+.login {
+	position: absolute;
+  	left: 15px;
+  	top: 30px;
+  	padding: 0;
+}
+.login .login-link-text{
+	padding: 8px 14px;
+	display: block;
+}
+
+#login-dropdown-list {
+	top: 7px;
+  	left: 10px;
+}
+
+.login-form label{
+	display: block;
+	text-align: left;
+}

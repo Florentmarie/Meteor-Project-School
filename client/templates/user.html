@@ -4,9 +4,12 @@
 </head>
 
 <body>
- 
- {{nom}}<br>
- {{mail}}
+	<div class="row">
+		<ul class="col-md-3">
+			<li>{{nom}}{{#if isOwner}}<button class="delete">&times;</button>{{/if}}</li>
+			<li>{{mail}}{{#if isOwner}}<button class="delete">&times;</button>{{/if}}</li>
+		</ul>
+	</div>
 
 </body>
 <!-- PAGE DE PROFIL D'un contact -->

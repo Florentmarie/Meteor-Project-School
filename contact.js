@@ -1,5 +1,7 @@
 Contacts = new Mongo.Collection("contacts");
 
+Informations = new Mongo.Collection("informations");
+
 if (Meteor.isClient) {
 
   Template.liste.helpers({
@@ -27,7 +29,33 @@ if (Meteor.isClient) {
   }
   });
 
+  //Template informations
 
+  Template.info.events({
+
+   "submit .add-info": function (event) {
+  
+
+    var prenom = event.target.prenom.value;
+    var mail = event.target.mail.value;
+
+    Meteor.call("addInformations", prenom, mail);
+
+    event.target.prenom.value = "";
+    event.target.mail.value = "";
+
+    console.log(prenom);
+    console.log(mail);
+    
+    return false;
+  }
+  });
+
+  Template.info.helpers({
+    info : function(){
+      return  Informations.find({owner: Meteor.userId()});
+    }
+  });
 
       // configuration account ui : pas de mail
   Accounts.ui.config({
@@ -46,6 +74,20 @@ Meteor.methods({
 
     Contacts.insert({
       nom: nom,
+      mail: mail,
+      createdAt: new Date(),
+      owner: Meteor.userId(),
+      username: Meteor.user().username
+    });
+  },
+  addInformations: function (prenom, mail) {
+    // vérifie si l'user est connecté
+    if (! Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    Informations.insert({
+      prenom: prenom,
       mail: mail,
       createdAt: new Date(),
       owner: Meteor.userId(),
