@@ -29,6 +29,7 @@
  <div class="row">
   <h1 class="text-center">Répertoire de contacts</h1>
   <div class="login btn btn-primary">{{> loginButtons}}</div>
+  <a href="#">Ajouter un contact</a>
   
  </div>
 </template>
@@ -63,7 +64,8 @@
   {{#if contact}} <!-- si il a des contacts -->
     {{#each contact}}   
      <a href="user/{{_id}}"> Nom :  {{nom}}
-      Mail :  {{mail}}</a>
+      Mail :  {{mail}}</a>      
+      <button class="delete">&times;</button>
       <br>
      {{/each}}
   {{else}}
