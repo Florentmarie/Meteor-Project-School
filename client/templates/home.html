@@ -73,12 +73,19 @@
 
 
   {{#if contact}} <!-- si il a des contacts -->
-    {{#each contact}}   
-     <a href="user/{{_id}}"> Nom :  {{nom}}
-      Mail :  {{mail}}</a>      
+  <div class="row list">
+    {{#each contact}} 
+    <div class="col-md-6">
+      <a href="user/{{_id}}"> 
+        <div>
+          Nom :  {{nom}}<br>
+          Mail :  {{mail}}
+        </div>
+      </a>
       <button class="delete">&times;</button>
-      <br>
+    </div>  
      {{/each}}
+   </div>
   {{else}}
   Vous n'avez pas de contacts
   {{/if}}

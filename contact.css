@@ -69,3 +69,22 @@ a {
 .dropdown-menu {
   padding: 10px;
 }
+
+.list .col-md-6 {
+  padding: 0;
+  text-align: center;
+}
+
+.list .col-md-6 a {
+  display: block;
+  padding: 5px 15px;
+}
+.list .col-md-6 a div{
+  border-radius: 5px;
+  border: 3px solid #eee;
+}
+.list .col-md-6 button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
