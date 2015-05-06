@@ -78,6 +78,7 @@ a {
  .col-md-6 a {
   display: block;
   padding: 5px 15px;
+  color: #333
 }
  .col-md-6 a div{
   border-radius: 5px;
@@ -92,3 +93,8 @@ a {
 li {
   list-style: none;
 }
+
+
+/*******************************************
+            POP-UP
+*******************************************/
