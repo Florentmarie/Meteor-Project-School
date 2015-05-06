@@ -24,9 +24,14 @@ h1 {
 
 .login {
 	position: absolute;
-  	left: 15px;
-  	top: 30px;
-  	padding: 0;
+	left: 15px;
+	top: 21px;
+	padding: 0;
+}
+@media screen and (max-width: 560px) {
+  .first-title {
+    margin-top: 70px;
+  }
 }
 .login .login-link-text{
 	padding: 8px 14px;
@@ -41,4 +46,26 @@ h1 {
 .login-form label{
 	display: block;
 	text-align: left;
+}
+
+a {
+  text-decoration: none;
+}
+.title {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.title h1 {
+  display: inline-block;
+  margin: 0;
+}
+
+.dropdown input{
+  display: block;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.dropdown-menu {
+  padding: 10px;
 }
