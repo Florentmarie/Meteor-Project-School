@@ -35,14 +35,14 @@
     "wells"                : false,
     "close"                : false,
 
-    "modals"               : false,
+    "modals"               : true,
     "tooltip"              : false,
     "popovers"             : false,
     "carousel"             : false,
 
     "affix"                : false,
     "alert"                : false,
-    "button"               : false,
+    "button"               : true,
     "collapse"             : false,
     "scrollspy"            : false,
     "tab"                  : false,

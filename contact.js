@@ -10,7 +10,7 @@ if (Meteor.isClient) {
 
   Template.liste.events({
    
-  "click .delete": function () {
+  "click .delete": function () {      
       Meteor.call("deleteContact", this._id);
     }
   });
@@ -58,8 +58,8 @@ Meteor.methods({
     });
   },
   deleteContact: function (contactId) {
-    console.log(contactId);
     Contacts.remove(contactId);
+    $(".modal-backdrop").remove();
   }
 
 })
