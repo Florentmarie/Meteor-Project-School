@@ -13,7 +13,7 @@
     {{> liste}}
     {{/if}}
 
-     {{> searchBox}}
+    {{> searchBox}}
   </div>
   
 </body>
@@ -56,12 +56,16 @@
 
 <template name="searchBox">
   <!-- instant searchbox -->
-
-    {{> esInput index="contacts" placeholder="Chercher un contact" }}
-
-    <ul>
+  <div class="row">
+    <div class="col-md-11 title">
+      <h1>Recherche d'un contact</h1>
+      {{> esInput index="contacts" placeholder="Chercher un contact" class="pull-right btn btn-default"}}
+      <hr>
+    </div>
+  </div>
+    <ul class="row">
         {{#esEach index="contacts"}}
-            <li>Nom du contact : <a href='/user/{{_id}}'>{{nom}}</a></li>
+            <li class="col-md-6"><a href='/user/{{_id}}'><div>{{nom}}</div></a></li>
         {{/esEach}}
     </ul>
       {{#ifEsHasNoResults index="contacts"}}
