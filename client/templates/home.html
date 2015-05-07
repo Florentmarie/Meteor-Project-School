@@ -47,11 +47,21 @@
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
       <form class="new-contact">
       <li role="presentation"><label>Nom</label><input required type="text" name="nom" placeholder="NOM" /></li>
-      <li role="presentation"><label>Mail</label><input required type="email" name="mail" placeholder="MAIL" /></li>
+      <li role="presentation"><label>Prénom</label><input type="text" name="prenom" placeholder="PRENOM" /></li>
+      <li role="presentation"><label>Téléphone</label><input type="tel" name="tel" placeholder="TELEPHONE" /></li>
+      <li role="presentation"><label>Adresse</label><input type="text" name="adress" placeholder="ADRESSE" /></li>
+      <li role="presentation"><label>Mail</label><input type="email" name="mail" placeholder="MAIL" /></li>
       <li role="presentation"><input class="btn btn-success" type="submit" value="Submit"></li>
       </form>
+      <li>
+        <div class="input_fields_wrap">
+          <label class="add_field_button">Add More Fields</label>
+          <div><input type="text" name="mytext[]"></div>
+        </div>
+      </li>
     </ul>
   </div>
+
 </template>
 
 <template name="searchBox">
@@ -80,10 +90,9 @@
   <div class="row list">
     {{#each contact}} 
     <div class="col-md-6">
-      <a href="user/{{_id}}"> 
+      <a class="thisContact" href="#" data-toggle="modal" data-target="#{{_id}}"> 
         <div>
-          Nom :  {{nom}}<br>
-          Mail :  {{mail}}
+          {{nom}}
         </div>
       </a>
       <button class="areUSure" data-toggle="modal" data-target="#myModal">&times;</button>
@@ -101,9 +110,39 @@
         </div>
       </div>
     </div> 
+    <div class="modal fade" id="{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Info du contact</h4>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li>{{nom}}</li>
+              <li>{{prenom}}</li>
+              <li>{{tel}}</li>
+              <li>{{adress}}</li>
+              <li>{{mail}}</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            
+          </div>
+        </div>
+      </div>
+    </div>
      {{/each}}
    </div>
   {{else}}
   Vous n'avez pas de contacts
   {{/if}}
+
+  
+</template>
+
+<template name="user">
+
+<!-- PAGE DE PROFIL D'un contact -->
+
+
 </template>
