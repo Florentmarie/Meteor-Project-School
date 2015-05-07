@@ -8,12 +8,14 @@
   <div class="container">
     {{> hello}}
 
+
+
     <!-- si l'user est connecté on affiche sa liste -->
     {{#if currentUser}}
     {{> liste}}
     {{/if}}
 
-    {{> searchBox}}
+    
   </div>
   
 </body>
@@ -28,7 +30,9 @@
  
   <h1 class="text-center first-title">Répertoire de contacts</h1>
   <div class="login btn btn-primary">{{> loginButtons}}</div>
+   {{> searchBox}}
   <div class="row">
+
     <div class="col-md-11 title">
       <h1>Contact</h1>
       {{> ajout}}
@@ -53,12 +57,6 @@
       <li role="presentation"><label>Mail</label><input type="email" name="mail" placeholder="MAIL" /></li>
       <li role="presentation"><input class="btn btn-success" type="submit" value="Submit"></li>
       </form>
-      <li>
-        <div class="input_fields_wrap">
-          <label class="add_field_button">Add More Fields</label>
-          <div><input type="text" name="mytext[]"></div>
-        </div>
-      </li>
     </ul>
   </div>
 
@@ -75,7 +73,7 @@
   </div>
     <ul class="row">
         {{#esEach index="contacts"}}
-            <li class="col-md-6"><a href='/user/{{_id}}'><div>{{nom}}</div></a></li>
+            <li class="col-md-6"><a class="thisContact" href="#" data-toggle="modal" data-target="#{{_id}}"><div>{{nom}}</div></a></li>
         {{/esEach}}
     </ul>
       {{#ifEsHasNoResults index="contacts"}}
