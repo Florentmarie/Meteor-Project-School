@@ -13,6 +13,9 @@ if (Meteor.isClient) {
     "click .delete": function () {      
       Meteor.call("deleteContact", this._id);
     },
+    "click .deleteMail": function () {      
+      Meteor.call("deleteMail", this.mail);
+    },
     "click .thisContact": function () {      
       Meteor.call("seeInfo", this._id);
     }
@@ -74,6 +77,10 @@ Meteor.methods({
   deleteContact: function (contactId) {
     Contacts.remove(contactId);
     $(".modal-backdrop").remove();
+  },
+  deleteMail: function (mail) {
+    console.log(mail);
+    Contacts.remove(mail);
   },
   seeInfo: function (thisId) {
     return  Contacts.findOne({_id: thisId});
