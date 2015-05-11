@@ -1,0 +1,146 @@
+<template name="Home">
+<head>
+  <title>Répertoire de contacts</title>
+  <meta name="viewport" content="width=device-width"/>
+</head>
+
+<body>
+  <div class="container">
+    {{> hello}}
+
+
+
+    <!-- si l'user est connecté on affiche sa liste -->
+    {{#if currentUser}}
+    {{> liste}}
+    {{/if}}
+
+    
+  </div>
+  
+</body>
+
+
+
+</template>
+
+
+<template name="hello">
+ 
+ 
+  <h1 class="text-center first-title">Répertoire de contacts</h1>
+  <div class="login btn btn-primary">{{> loginButtons}}</div>
+   {{> searchBox}}
+  <div class="row">
+
+    <div class="col-md-11 title">
+      <h1>Contact</h1>
+      {{> ajout}}
+      <hr>
+    </div>
+  </div>
+</template>
+
+<template name="ajout">
+	<!-- ajout d'un contact -->
+  <div class="dropdown pull-right">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+      Ajouter un contact
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <form class="new-contact">
+      <li role="presentation"><label>Nom</label><input required type="text" name="nom" placeholder="NOM" /></li>
+      <li role="presentation"><label>Prénom</label><input type="text" name="prenom" placeholder="PRENOM" /></li>
+      <li role="presentation"><label>Téléphone</label><input type="tel" name="tel" placeholder="TELEPHONE" /></li>
+      <li role="presentation"><label>Adresse</label><input type="text" name="adress" placeholder="ADRESSE" /></li>
+      <li role="presentation"><label>Mail</label><input type="email" name="mail" placeholder="MAIL" /></li>
+      <li role="presentation"><input class="btn btn-success" type="submit" value="Submit"></li>
+      </form>
+    </ul>
+  </div>
+
+</template>
+
+<template name="searchBox">
+  <!-- instant searchbox -->
+  <div class="row">
+    <div class="col-md-11 title">
+      <h1>Recherche d'un contact</h1>
+      {{> esInput index="contacts" placeholder="Chercher un contact" class="pull-right btn btn-default"}}
+      <hr>
+    </div>
+  </div>
+    <ul class="row">
+        {{#esEach index="contacts"}}
+            <li class="col-md-6"><a class="thisContact" href="#" data-toggle="modal" data-target="#{{_id}}"><div>{{nom}}</div></a></li>
+        {{/esEach}}
+    </ul>
+      {{#ifEsHasNoResults index="contacts"}}
+        <div class="no-results">Aucun résultat</div>
+    {{/ifEsHasNoResults}}
+</template>
+
+<template name="liste">
+
+
+  {{#if contact}} <!-- si il a des contacts -->
+  <div class="row list">
+    {{#each contact}} 
+    <div class="col-md-6">
+      <a class="thisContact" href="#" data-toggle="modal" data-target="#{{_id}}"> 
+        <div>
+          {{nom}}
+        </div>
+      </a>
+      <button class="areUSure" data-toggle="modal" data-target="#myModal">&times;</button>
+    </div> 
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Voulez-vous vraiment supprimer ce contact ?</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success close delete" data-dismiss="modal"  aria-label="Close">Oui</button>
+            <button type="button" class="btn btn-danger close" data-dismiss="modal">Non</button>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <div class="modal fade" id="{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Info du contact</h4>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li>{{nom}}</li>
+              <li>{{prenom}}</li>
+              <li>{{tel}}</li>
+              <li>{{adress}}</li>
+              <li>{{mail}}</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+     {{/each}}
+   </div>
+  {{else}}
+  Vous n'avez pas de contacts
+  {{/if}}
+
+  
+</template>
+
+<template name="user">
+
+<!-- PAGE DE PROFIL D'un contact -->
+
+
+</template>
