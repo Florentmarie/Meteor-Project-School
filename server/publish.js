@@ -1,6 +1,5 @@
 
 
-
 Meteor.publish("contacts", function () {
-      return Contacts.find();
+      return Contacts.find({owner: this.userId});
 });
