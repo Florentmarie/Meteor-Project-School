@@ -1,21 +1,27 @@
 <head>
-  <title>exo_meteor</title>
+  <title>Contact</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-  {{> loginButtons}}
   {{> hello}}
+  {{> user_list}}
 </body>
 
 <template name="hello">
-	<div class="row clearfix">
-		<div class="col-md-3">
-			<button class="btn btn-primary">Click Me</button>
-		</div>
-		<div class="col-md-8">
-			<p>You've pressed the button {{counter}} times.</p>
-		</div>
+	
+	<div class="row">
+		<h1 class="col-md-2 col-md-offset-5">Contact</h1>
+		<div class="col-md-2 col-md-offset-5">{{> loginButtons}}</div>
 	</div>
 </template>
 
+<template name="user_list">
+    <div class="user-list">
+    <h1>Users</h1>
+        <ul>
+        {{#each allUsers}}
+            {{> user_item}}
+        {{/each}}
+        </ul>
+    </div>
+</template>

@@ -1,4 +1,8 @@
-
+Template.user_list.helpers({
+  allUsers: function () {
+    return Meteor.users.find().fetch();
+  }
+});
 
 if (Meteor.isClient) {
   // counter starts at 0
