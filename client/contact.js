@@ -6,6 +6,7 @@
   });
 
   Template.contacts.helpers({
+    // si on est en mode update de contact
     update : function(){
        return Session.get('update');
     }
@@ -25,9 +26,6 @@
  Template.contacts.events({
     "click #update": function () {      
      Session.set('update', true);
-    },    
-    "click #endUpdate": function () {      
-     Session.set('update', false);
     },
 
     "submit .modif": function (event) {
