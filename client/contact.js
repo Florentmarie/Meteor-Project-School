@@ -31,7 +31,7 @@
     },
 
     "submit .modif": function (event) {
-  
+  console.log('ohoi')
     var nom = event.target.nom.value;
     var prenom = event.target.prenom.value;
     var tel = event.target.tel.value;
