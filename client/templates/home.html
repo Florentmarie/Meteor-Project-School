@@ -8,13 +8,14 @@
 
   <body>
     <div class="container">
-      {{> hello}}
-
-
-
+      <h1 class="text-center first-title">Répertoire de contacts</h1>
+      <div class="login btn btn-primary">{{> loginButtons}}</div>
       <!-- si l'user est connecté on affiche sa liste -->
       {{#if currentUser}}
-      {{> liste}}
+        {{> hello}}
+        {{> liste}}
+      {{else}}
+      Veuillez vous connectez
       {{/if}}
 
       
@@ -28,8 +29,6 @@
 <template name="hello">
  
  
-  <h1 class="text-center first-title">Répertoire de contacts</h1>
-  <div class="login btn btn-primary">{{> loginButtons}}</div>
    {{> searchBox}}
   <div class="row">
 
@@ -40,6 +39,27 @@
     </div>
   </div>
 </template>
+
+<template name="searchBox">
+  <!-- instant searchbox -->
+  <div class="row">
+    <div class="col-md-11 title">
+      <h1>Recherche d'un contact</h1>
+      {{> esInput index="contacts" placeholder="Chercher un contact" class="pull-right btn btn-default"}}
+      <hr>
+    </div>
+  </div>
+    <ul class="row">
+     <!--  resultat research instant -->
+        {{#esEach index="contacts"}}
+            <li class="col-md-6"><a class="thisContact" href="#" data-toggle="modal" data-target="#{{_id}}"><div>{{nom}}</div></a></li>
+        {{/esEach}}
+    </ul>
+      {{#ifEsHasNoResults index="contacts"}}
+        <div class="no-results">Aucun résultat</div>
+    {{/ifEsHasNoResults}}
+</template>
+
 
 <template name="ajout">
 	<!-- ajout d'un contact -->
@@ -62,25 +82,6 @@
 
 </template>
 
-<template name="searchBox">
-  <!-- instant searchbox -->
-  <div class="row">
-    <div class="col-md-11 title">
-      <h1>Recherche d'un contact</h1>
-      {{> esInput index="contacts" placeholder="Chercher un contact" class="pull-right btn btn-default"}}
-      <hr>
-    </div>
-  </div>
-    <ul class="row">
-     <!--  resultat research instant -->
-        {{#esEach index="contacts"}}
-            <li class="col-md-6"><a class="thisContact" href="#" data-toggle="modal" data-target="#{{_id}}"><div>{{nom}}</div></a></li>
-        {{/esEach}}
-    </ul>
-      {{#ifEsHasNoResults index="contacts"}}
-        <div class="no-results">Aucun résultat</div>
-    {{/ifEsHasNoResults}}
-</template>
 
 <template name="liste">
 
@@ -123,7 +124,6 @@
     </div>
 
     <!-- Pop up info du contact  -->
-
 
     <div class="modal fade" id="{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -168,8 +168,6 @@
     <li>Adresse : <input  type="text" name="adress" value="{{adress}}" /></li>
     <li>Mail : <input  type="email" name="mail" value="{{mail}}" /></li>
     <button type="submit" value='Submit' >Valider</button>
-<!--     <button id="endUpdate" >Annuler</button>
-<button >dadada</button> -->
   </form>
 
 </template>
