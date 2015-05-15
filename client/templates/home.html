@@ -40,8 +40,9 @@
   </div>
 </template>
 
-<template name="searchBox">
+
   <!-- instant searchbox -->
+<template name="searchBox">
   <div class="row">
     <div class="col-md-11 title">
       <h1>Recherche d'un contact</h1>
@@ -60,9 +61,9 @@
     {{/ifEsHasNoResults}}
 </template>
 
-
+  <!-- ajout d'un contact -->
 <template name="ajout">
-	<!-- ajout d'un contact -->
+
   <div class="dropdown pull-right">
     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
       Ajouter un contact
@@ -102,7 +103,7 @@
 <template name="contacts">
 
 <div class="col-md-6">
-      <a class="thisContact" href="#" data-toggle="modal" data-target="#{{_id}}"> 
+      <a class="thisContact" href="#" data-toggle="modal" data-target="#{{_id}}"> <!--  Envoie vers la pop -->
         <div>
           {{nom}}
         </div>
